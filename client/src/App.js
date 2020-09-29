@@ -5,7 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Dashboard from './components/pages/Dashboard';
 
-import ContactState from './context/contacts/ContactState';
+import ContactState from './context/contacts/contactState';
 import AuthState from './context/auth/AuthState';
 import Login from './components/auth/Login';
 import AlertState from './context/alert/AlertState';
