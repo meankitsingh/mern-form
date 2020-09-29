@@ -7,7 +7,7 @@ export const ContactItem = ({ contact }) => {
 
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
 
-  const { _id, address, username, email, password, type } = contact;
+  const { _id, firstName, lastName,telephoneNumber, address, SSN } = contact;
 
   const onDelete = () => {
     deleteContact(_id);
@@ -17,16 +17,7 @@ export const ContactItem = ({ contact }) => {
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
-        {username}{' '}
-        <span
-          style={{ float: 'right' }}
-          className={
-            'badge ' +
-            (type === 'professional' ? 'badge-success' : 'badge-primary')
-          }
-        >
-          {type.charAt(0).toUpperCase() + type.slice(1)}
-        </span>
+        {firstName}{' '}{lastName}      
       </h3>
       <ul className="list">
         {address && (
@@ -35,16 +26,16 @@ export const ContactItem = ({ contact }) => {
             {' ' + address}
           </li>
         )}
-        {email && (
+        {telephoneNumber && (
           <li>
             <i className="fas fa-envelope-open"></i>
-            {' ' + email}
+            {' ' + telephoneNumber}
           </li>
         )}
-        {password && (
+        {SSN && (
           <li>
             <i className="fas fa-key"></i>
-            {' ' + password}
+            {' ' + SSN}
           </li>
         )}
       </ul>

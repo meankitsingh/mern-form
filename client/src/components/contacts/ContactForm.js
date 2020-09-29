@@ -16,24 +16,24 @@ export const ContactForm = () => {
       setContact(current);
     } else {
       setContact({
+        firstName: '',
+        lastName: '',
+        telephoneNumber: '',
         address: '',
-        username: '',
-        email: '',
-        password: '',
-        type: 'personal'
+        SSN: ''
       });
     }
   }, [contactContext, current]);
 
   const [contact, setContact] = useState({
+    firstName: '',
+    lastName: '',
+    telephoneNumber: '',
     address: '',
-    username: '',
-    email: '',
-    password: '',
-    type: 'personal'
+    SSN: ''
   });
 
-  const { address, username, email, password, type } = contact;
+  const { firstName, lastName,telephoneNumber, address, SSN } = contact;
 
   const onChange = e =>
     setContact({ ...contact, [e.target.name]: e.target.value });
@@ -46,11 +46,11 @@ export const ContactForm = () => {
       addContact(contact);
     }
     setContact({
+      firstName: '',
+      lastName: '',
+      telephoneNumber: '',
       address: '',
-      username: '',
-      email: '',
-      password: '',
-      type: 'personal'
+      SSN: ''
     });
   };
 
@@ -61,57 +61,49 @@ export const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className="text-primary">
-        {current ? 'Update Contact' : 'Add Contact'}
+        {current ? 'Update User Info' : 'Add User Info'}
       </h2>
       <input
         type="text"
-        placeholder="Address"
+        placeholder="First Name"
+        name="firstName"
+        value={firstName}
+        onChange={onChange}
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        name="lastName"
+        value={lastName}
+        onChange={onChange}
+      />
+      <input
+        type="text"
+        placeholder="Telephone Number"
+        name="telephoneNumber"
+        value={telephoneNumber}
+        onChange={onChange}
+      />
+      <input
+        type="text"
+        placeholder="address"
         name="address"
         value={address}
         onChange={onChange}
       />
-      <input
+
+        <input
         type="text"
-        placeholder="Username"
-        name="username"
-        value={username}
+        placeholder="SSN"
+        name="SSN"
+        value={SSN}
         onChange={onChange}
       />
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={email}
-        onChange={onChange}
-      />
-      <input
-        type="text"
-        placeholder="Password"
-        name="password"
-        value={password}
-        onChange={onChange}
-      />
-      <h5>Contact Type</h5>
-      <input
-        type="radio"
-        name="type"
-        value="personal"
-        checked={type === 'personal'}
-        onChange={onChange}
-      />
-      Personal{' '}
-      <input
-        type="radio"
-        name="type"
-        value="professional"
-        checked={type === 'professional'}
-        onChange={onChange}
-      />
-      Professional
+  
       <div>
         <input
           type="submit"
-          value={current ? 'Update Contact' : 'Add Contact'}
+          value={current ? 'Update' : 'Add'}
           className="btn btn-primary btn-block"
         />
       </div>
