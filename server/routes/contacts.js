@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('../middleware/auth');
+const {encrypt,decrypt} = require('../middleware/crypto');
 const User = require('../models/User');
 const { check, validationResult } = require('express-validator');
 
@@ -15,6 +16,13 @@ router.get('/', auth, async (req, res) => {
     const contacts = await Contact.find().sort({
       date: -1
     });
+    if(contacts && contacts.length>0)
+    {
+    contacts.forEach(element => {
+      element.SSN=decrypt(element.SSN);
+      
+    });
+  }
     res.json(contacts);
   } catch (error) {
     console.error(error.message);
@@ -46,7 +54,7 @@ router.post(
       const newContact = new Contact({
         firstName, lastName,telephoneNumber, address, SSN
       });
-
+      newContact.SSN=encrypt(newContact.SSN);
       const contact = await newContact.save();
 
       res.json(contact);
@@ -68,7 +76,7 @@ router.put('/:id', auth, async (req, res) => {
   if (lastName) contactFields.lastName = lastName;
   if (telephoneNumber) contactFields.telephoneNumber = telephoneNumber;
   if (address) contactFields.address = address;
-  if (SSN) contactFields.SSN = SSN;
+  if (SSN) contactFields.SSN =encrypt(SSN);
 
   try {
     let contact = await Contact.findById(req.params.id);

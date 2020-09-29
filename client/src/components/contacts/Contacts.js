@@ -15,7 +15,7 @@ export const Contacts = () => {
   }, []);
 
   if (contacts !== null && contacts.length === 0 && !loading) {
-    return <h4>Please Add A Contact...</h4>;
+    return <h4>Please Add A External User Info...</h4>;
   }
 
   return (
