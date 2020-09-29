@@ -1,10 +1,10 @@
 import React, { useContext, useRef, useEffect } from 'react';
-import ContactContext from '../../context/contacts/presenceContext';
+import ContactContext from '../../context/contacts/contactContext';
 
 export const ContactFilter = () => {
-  const presenceContext = useContext(ContactContext);
+  const contactContext = useContext(ContactContext);
 
-  const { filterContacts, clearFilter, filtered } = presenceContext;
+  const { filterContacts, clearFilter, filtered } = contactContext;
   const text = useRef('');
 
   useEffect(() => {

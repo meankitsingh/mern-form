@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
-import ContactContext from '../../context/contacts/presenceContext';
+import ContactContext from '../../context/contacts/contactContext';
 
 export const ContactForm = () => {
-  const presenceContext = useContext(ContactContext);
+  const contactContext = useContext(ContactContext);
 
   const {
     addContact,
     current,
     clearCurrent,
     updateContact
-  } = presenceContext;
+  } = contactContext;
 
   useEffect(() => {
     if (current) {
@@ -23,7 +23,7 @@ export const ContactForm = () => {
         type: 'personal'
       });
     }
-  }, [presenceContext, current]);
+  }, [contactContext, current]);
 
   const [contact, setContact] = useState({
     address: '',
