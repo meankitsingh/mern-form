@@ -2,24 +2,24 @@ import {
   ADD_PRESENCE,
   DELETE_PRESENCE,
   UPDATE_PRESENCE,
-  FILTER_PRESENCES,
+  FILTER_CONTACTS,
   SET_CURRENT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
   PRESENCE_ERROR,
-  GET_PRESENCES,
-  CLEAR_PRESENCES
+  GET_CONTACTS,
+  CLEAR_CONTACTS
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
-    case GET_PRESENCES:
+    case GET_CONTACTS:
       return {
         ...state,
         contacts: action.payload,
         loading: false
       };
-    case CLEAR_PRESENCES:
+    case CLEAR_CONTACTS:
       return {
         ...state,
         contacts: null,
@@ -66,7 +66,7 @@ export default (state, action) => {
         loading: false,
         current: null
       };
-    case FILTER_PRESENCES:
+    case FILTER_CONTACTS:
       return {
         ...state,
         filtered: state.contacts.filter(contact => {

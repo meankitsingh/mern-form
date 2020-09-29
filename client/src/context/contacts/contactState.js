@@ -7,13 +7,13 @@ import {
   ADD_PRESENCE,
   DELETE_PRESENCE,
   UPDATE_PRESENCE,
-  FILTER_PRESENCES,
+  FILTER_CONTACTS,
   SET_CURRENT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
   PRESENCE_ERROR,
-  GET_PRESENCES,
-  CLEAR_PRESENCES
+  GET_CONTACTS,
+  CLEAR_CONTACTS
 } from '../types';
 
 const ContactState = props => {
@@ -30,7 +30,7 @@ const ContactState = props => {
   const getContacts = async () => {
     try {
       const res = await axios.get('http://localhost:5000/api/contacts');
-      dispatch({ type: GET_PRESENCES, payload: res.data });
+      dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (error) {
       dispatch({ type: PRESENCE_ERROR, payload: error.response.msg });
     }
@@ -38,7 +38,7 @@ const ContactState = props => {
 
   const clearContacts = () => {
     dispatch({
-      type: CLEAR_PRESENCES
+      type: CLEAR_CONTACTS
     });
   };
 
@@ -100,7 +100,7 @@ const ContactState = props => {
   };
 
   const filterContacts = text => {
-    dispatch({ type: FILTER_PRESENCES, payload: text });
+    dispatch({ type: FILTER_CONTACTS, payload: text });
   };
 
   const clearFilter = () => {

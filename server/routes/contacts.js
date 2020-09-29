@@ -28,9 +28,8 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-    auth,
     [
-      check('username', 'Please enter a Name')
+      check('firstName', 'Please enter a firstName')
         .not()
         .isEmpty()
     ]
@@ -41,16 +40,11 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { address, username, email, password, type } = req.body;
+    const { firstName, lastName,telephoneNumber, address, SSN } = req.body;
 
     try {
       const newContact = new Contact({
-        user: req.user.id,
-        address,
-        username,
-        email,
-        password,
-        type
+        firstName, lastName,telephoneNumber, address, SSN
       });
 
       const contact = await newContact.save();
@@ -67,14 +61,14 @@ router.post(
 // @desc    Update Contact
 // @access  Private
 router.put('/:id', auth, async (req, res) => {
-  const { address, username, email, password, type } = req.body;
+  const {firstName, lastName,telephoneNumber, address, SSN} = req.body;
 
   const contactFields = {};
+  if (firstName) contactFields.firstName = firstName;
+  if (lastName) contactFields.lastName = lastName;
+  if (telephoneNumber) contactFields.telephoneNumber = telephoneNumber;
   if (address) contactFields.address = address;
-  if (username) contactFields.username = username;
-  if (email) contactFields.email = email;
-  if (password) contactFields.password = password;
-  if (type) contactFields.type = type;
+  if (SSN) contactFields.SSN = SSN;
 
   try {
     let contact = await Contact.findById(req.params.id);
