@@ -6,4 +6,3 @@ External users Frontend should provide a simple form for users to enter their pe
 In the Backend, you should receive the user's info and do the following:
 Encrypt SSN and store it in the DB
 Store the rest of info as plain text in the DB
-
