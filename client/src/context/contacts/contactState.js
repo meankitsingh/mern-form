@@ -4,14 +4,14 @@ import ContactReducer from './contactReducer';
 import axios from 'axios';
 
 import {
-  ADD_PRESENCE,
-  DELETE_PRESENCE,
-  UPDATE_PRESENCE,
+  ADD_CONTACT,
+  DELETE_CONTACT,
+  UPDATE_CONTACT,
   FILTER_CONTACTS,
   SET_CURRENT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
-  PRESENCE_ERROR,
+  CONTACT_ERROR,
   GET_CONTACTS,
   CLEAR_CONTACTS
 } from '../types';
@@ -32,7 +32,7 @@ const ContactState = props => {
       const res = await axios.get('http://localhost:5000/api/contacts');
       dispatch({ type: GET_CONTACTS, payload: res.data });
     } catch (error) {
-      dispatch({ type: PRESENCE_ERROR, payload: error.response.msg });
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
     }
   };
 
@@ -54,9 +54,10 @@ const ContactState = props => {
         contact,
         config
       );
-      dispatch({ type: ADD_PRESENCE, payload: res.data });
+      console.log(res);
+      dispatch({ type: ADD_CONTACT, payload: res.data });
     } catch (error) {
-      dispatch({ type: PRESENCE_ERROR, payload: error.response.msg });
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg||  error });
     }
   };
 
@@ -66,9 +67,9 @@ const ContactState = props => {
       const res = await axios.delete(
         `http://localhost:5000/api/contacts/${id}`
       );
-      dispatch({ type: DELETE_PRESENCE, payload: id });
+      dispatch({ type: DELETE_CONTACT, payload: id });
     } catch (error) {
-      dispatch({ type: PRESENCE_ERROR, payload: error.response.msg });
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
     }
   };
 
@@ -85,9 +86,9 @@ const ContactState = props => {
         contact,
         config
       );
-      dispatch({ type: UPDATE_PRESENCE, payload: res.data });
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
     } catch (error) {
-      dispatch({ type: PRESENCE_ERROR, payload: error.response.msg });
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
     }
   };
 

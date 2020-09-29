@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Dashboard from './components/pages/Dashboard';
+import Register from './components/auth/Register';
 
 import ContactState from './context/contacts/contactState';
 import AuthState from './context/auth/AuthState';
@@ -31,6 +32,8 @@ const App = () => {
                   <PrivateRoute exact path="/" component={Dashboard}></PrivateRoute>
                   <Route exact path="/home" component={Home}></Route>
                   <Route exact path="/login" component={Login}></Route>
+                  <Route exact path="/register" component={Register}></Route>
+
                 </Switch>
               </div>
             </Fragment>

@@ -1,12 +1,12 @@
 import {
-  ADD_PRESENCE,
-  DELETE_PRESENCE,
-  UPDATE_PRESENCE,
+  ADD_CONTACT,
+  DELETE_CONTACT,
+  UPDATE_CONTACT,
   FILTER_CONTACTS,
   SET_CURRENT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
-  PRESENCE_ERROR,
+  CONTACT_ERROR,
   GET_CONTACTS,
   CLEAR_CONTACTS
 } from '../types';
@@ -27,13 +27,14 @@ export default (state, action) => {
         error: null,
         current: null
       };
-    case ADD_PRESENCE:
+    case ADD_CONTACT:
+      console.log("...state.contacts",state.contacts);
       return {
         ...state,
-        contacts: [action.payload, ...state.contacts],
+        contacts: state.contacts?[action.payload, ...state.contacts]:[action.payload],
         loading: false
       };
-    case DELETE_PRESENCE:
+    case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
@@ -41,7 +42,7 @@ export default (state, action) => {
         ),
         loading: false
       };
-    case PRESENCE_ERROR:
+    case CONTACT_ERROR:
       return {
         ...state,
         error: action.payload,
@@ -57,7 +58,7 @@ export default (state, action) => {
         ...state,
         current: null
       };
-    case UPDATE_PRESENCE:
+    case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map(contact =>
