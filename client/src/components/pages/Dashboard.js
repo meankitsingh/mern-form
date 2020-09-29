@@ -13,7 +13,7 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className="grid-2">
+    <div className="grid-1-3">
       <div>
         <ContactForm />
       </div>

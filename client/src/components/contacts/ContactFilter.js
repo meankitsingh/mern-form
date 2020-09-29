@@ -25,7 +25,7 @@ export const ContactFilter = () => {
       <input
         ref={text}
         type="text"
-        placeholder="Filter Contacts..."
+        placeholder="Filter External Users..."
         onChange={onChange}
       />
     </form>

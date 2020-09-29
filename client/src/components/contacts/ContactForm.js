@@ -61,7 +61,7 @@ export const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className="text-primary">
-        {current ? 'Update User Info' : 'Add User Info'}
+        {current ? 'Update External User' : 'Add External User'}
       </h2>
       <input
         type="text"

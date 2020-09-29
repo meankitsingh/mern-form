@@ -15,31 +15,14 @@ export const ContactItem = ({ contact }) => {
   };
 
   return (
-    <div className="card bg-light">
-      <h3 className="text-primary text-left">
-        {firstName}{' '}{lastName}      
-      </h3>
-      <ul className="list">
-        {address && (
-          <li>
-            <i className="fas fa-link"></i>
-            {' ' + address}
-          </li>
-        )}
-        {telephoneNumber && (
-          <li>
-            <i className="fas fa-envelope-open"></i>
-            {' ' + telephoneNumber}
-          </li>
-        )}
-        {SSN && (
-          <li>
-            <i className="fas fa-key"></i>
-            {' ' + SSN}
-          </li>
-        )}
-      </ul>
-      <p>
+    <tr>
+      <td>{firstName}</td>
+      <td>{lastName}</td>
+      <td>{address}</td>
+      <td>{telephoneNumber}</td>
+      <td>{SSN}</td>
+
+      <td>    <p>
         <button
           className="btn btn-dark btn-sm"
           onClick={() => setCurrent(contact)}
@@ -49,8 +32,10 @@ export const ContactItem = ({ contact }) => {
         <button className="btn btn-danger btn-sm" onClick={onDelete}>
           Delete
         </button>
-      </p>
-    </div>
+      </p></td>
+
+    </tr>
+ 
   );
 };
 

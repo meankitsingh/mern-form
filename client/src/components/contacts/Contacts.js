@@ -22,6 +22,19 @@ export const Contacts = () => {
     <Fragment>
       {contacts !== null && !loading ? (
         <TransitionGroup>
+            <table>
+            <thead>
+                    <tr>
+                      <td>First Name</td>
+                      <td>Last Name</td>
+                      <td>Address</td>
+                      <td>Telephone Number</td>
+                      <td>SSN</td>
+                      <td>Action</td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
           {filtered !== null
             ? filtered.map(contact => (
                 <CSSTransition
@@ -29,7 +42,9 @@ export const Contacts = () => {
                   timeout={500}
                   classNames="item"
                 >
+                
                   <ContactItem contact={contact} />
+
                 </CSSTransition>
               ))
             : contacts.map(contact => (
@@ -38,9 +53,13 @@ export const Contacts = () => {
                   timeout={500}
                   classNames="item"
                 >
+              
                   <ContactItem contact={contact} />
+                 
                 </CSSTransition>
               ))}
+              </tbody>
+              </table>
         </TransitionGroup>
       ) : (
         <Spinner />
